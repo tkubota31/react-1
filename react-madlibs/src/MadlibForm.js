@@ -1,6 +1,6 @@
 import React ,{useState} from "react";
 
-const MadlibForm = () =>{
+const MadlibForm = ({addItem}) =>{
     const initialState = {
        noun1: "",
        noun2: "",
@@ -19,7 +19,7 @@ const MadlibForm = () =>{
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        const{noun1,noun2,adjective,color} = formData;
+        addItem({...formData})
         alert(`Thank you for submitting you ${adjective} ${noun1}. ${noun2} has the same favorite color as you,${color}! `)
         setFormData(initialState);
 
@@ -80,6 +80,7 @@ const MadlibForm = () =>{
                     >
                     </input>
                 </div>
+                <button>Create Story</button>
 
             </form>
         </div>
