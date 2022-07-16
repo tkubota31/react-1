@@ -2,20 +2,26 @@ import React, {useState} from "react"
 import MadlibForm from "./MadlibForm"
 import {v4 as uuid} from "uuid"
 import Item from "./Item"
+import useToggleState from "./hooks/useToggleState"
 
 const Madlib = () =>{
-    const initialState = {
-        noun1: "",
-       noun2: "",
-       adjective: "",
-       color: ""
-    }
+    const initialState = [{
+    //     noun1: "",
+    //    noun2: "",
+    //    adjective: "",
+    //    color: ""
+}]
 
     const [items, setItems] = useState(initialState)
+    const [showStory,toggleShowStory] = useToggleState()
 
     const addItem = (newItem) =>{
-        setItems(items => [...items,{...newItem, id:uuid()}])
+        setItems(items => [...items, {...newItem, id:uuid()}])
     }
+    const restart = () =>{
+        toggleShowStory();
+        setItems([])
+    };
 
     return(
         <div>
@@ -25,8 +31,11 @@ const Madlib = () =>{
             </div>
 
             <div>
-                {items.map(({id,noun1, noun2, adjective, color}) => <Item id={id} noun1={noun1} noun2={noun2} adjective={adjective} color={color} />)}
+                {items.map(({id, noun1, noun2, adjective, color}) => <Item id={id} noun1={noun1} noun2={noun2} adjective={adjective} color={color} key={id} />)}
+                <button onClick={restart}>Restart</button>
             </div>
         </div>
     )
 }
+
+export default Madlib

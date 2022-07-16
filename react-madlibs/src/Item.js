@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
+
 
 const Item = ({noun1,noun2,adjective,color}) =>{
 

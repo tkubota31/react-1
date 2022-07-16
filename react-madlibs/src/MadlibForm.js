@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React,{useState} from "react";
 
 const MadlibForm = ({addItem}) =>{
     const initialState = {
@@ -11,19 +11,19 @@ const MadlibForm = ({addItem}) =>{
 
     const handleChange = (e) =>{
         const{name,value} = e.target;
-        setFormData( data => ({
+        setFormData( (data) => ({
             ...data,
             [name]:value
-        }))
+        }));
     };
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        addItem({...formData})
-        alert(`Thank you for submitting you ${adjective} ${noun1}. ${noun2} has the same favorite color as you,${color}! `)
+        addItem({...formData});
+        // alert(`Thank you for submitting you ${adjective} ${noun1}. ${noun2} has the same favorite color as you,${color}! `)
         setFormData(initialState);
 
-    }
+    };
 
     return(
         <div>
@@ -34,8 +34,8 @@ const MadlibForm = ({addItem}) =>{
                     <input
                     id="noun1"
                     type="text"
-                    placeholder="noun1"
                     name="noun1"
+                    placeholder="noun1"
                     value={formData.noun1}
                     onChange={handleChange}
                     >
