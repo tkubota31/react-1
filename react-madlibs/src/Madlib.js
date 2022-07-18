@@ -19,19 +19,23 @@ const Madlib = () =>{
         setItems(items => [...items, {...newItem, id:uuid()}])
     }
     const restart = () =>{
-        toggleShowStory();
+        toggleShowStory(false);
         setItems([])
     };
 
     return(
         <div>
-            <h3>Madlib Form!</h3>
-            <div>
-                <MadlibForm addItem={addItem}/>
-            </div>
-
-            <div>
+            <h3>Let's make Madlibs!</h3>
+            {showStory ? (
+                <div>
                 {items.map(({id, noun1, noun2, adjective, color}) => <Item id={id} noun1={noun1} noun2={noun2} adjective={adjective} color={color} key={id} />)}
+                </div>
+            ) : (
+            <div>
+                <MadlibForm addItem={addItem} toggleShowStory={toggleShowStory}/>
+            </div>
+            )}
+            <div>
                 <button onClick={restart}>Restart</button>
             </div>
         </div>

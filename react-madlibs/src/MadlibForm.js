@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 
-const MadlibForm = ({addItem}) =>{
+const MadlibForm = ({addItem, toggleShowStory}) =>{
     const initialState = {
        noun1: "",
        noun2: "",
@@ -22,6 +22,7 @@ const MadlibForm = ({addItem}) =>{
         addItem({...formData});
         // alert(`Thank you for submitting you ${adjective} ${noun1}. ${noun2} has the same favorite color as you,${color}! `)
         setFormData(initialState);
+        toggleShowStory(true)
 
     };
 
